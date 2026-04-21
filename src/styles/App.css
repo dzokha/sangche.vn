@@ -1,75 +1,202 @@
-/* Sidebar - Căn giữa tuyệt đối */
+/* src/styles/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ================= VARIABLES ================= */
+:root {
+  --bg-color: #F8FAFC; 
+  --text-main: #18181B; /* #0F172A; */
+  --text-secondary: #475569;
+  --text-light: #94A3B8;
+
+/*  --accent: #2563EB; 
+  --accent-hover: #1D4ED8;
+  --accent-light: #EFF6FF;*/
+  --accent: #00D65F; /* #00D060;  Xanh lá rực rỡ từ logo */
+  --accent-hover: #00A84E; /* Xanh lá đậm hơn khi hover */
+  --accent-light: #E6FBF0; /* Xanh lá nhạt dùng làm nền (10% opacity) */
+
+  --border-subtle: #E2E8F0;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ================= TYPOGRAPHY UTILS ================= */
+.text-accent { color: var(--accent); }
+
+/* ================= LAYOUT WRAPPER ================= */
+.layout-wrapper {
+  display: flex;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+/* ================= SIDEBAR GLOBALS ================= */
 .sidebar {
-  width: 35%;
+  width: 28%;
   height: 100vh;
   position: sticky;
   top: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Căn giữa nội dung theo chiều dọc */
-  padding-left: 100px;     /* Tạo khoảng cách bên trái để không bị ép sát lề */
+  justify-content: center;
+  padding: 0 40px 0 80px; 
   border-right: 1px solid var(--border-subtle);
+  background-color: #ffffff; 
 }
 
 .sidebar-inner {
-  max-width: 300px; /* Giới hạn độ rộng để text trông chuyên nghiệp hơn */
+  max-width: 380px;
+  width: 100%;
 }
 
-/* Identity Section */
 .brand-alias {
   font-size: 3.5rem;
-  font-weight: 850;
+  font-weight: 800;
   letter-spacing: -0.05em;
-  color: var(--text-main);
   margin: 0;
 }
 
-.brand-fullname {
-  font-size: 0.8rem;
+.brand-header {
+  display: flex;
+  align-items: center; /* Căn giữa logo và cụm chữ theo trục dọc */
+  gap: 12px;           /* Khoảng cách giữa logo và chữ */
+  margin-bottom: 12px;
+}
+
+.brand-logo {
+  /* Không set cứng chiều cao px nữa, mà để nó tự co dãn theo container */
+  height: 95px;        /* Độ cao này sẽ khớp với 2 dòng chữ bên dưới */
+  width: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  background-color: #1a1a1a; /* Nền đen sâu cho logo nổi bật */
+  padding: 4px;
+  transition: transform 0.3s ease;
+}
+
+.brand-text-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1;      /* Quan trọng: Loại bỏ khoảng cách thừa của dòng */
+}
+
+.brand-line-top {
+  font-size: 1.8rem;   /* Chữ SÁNG CHẾ nhỏ hơn một chút */
   font-weight: 700;
-  letter-spacing: 0.25em;
-  margin-top: 8px;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+  margin-bottom: 2px;
+}
+
+.brand-line-bottom {
+  font-size: 3.8rem;   /* Chữ VN cực đại để tạo điểm nhấn thương hiệu */
+  font-weight: 900;
+  color: var(--accent); /* Màu xanh lá của Logo */
+  letter-spacing: -0.05em;
+  margin-top: -5px;    /* Đẩy chữ VN sát lên trên để khít với dòng 1 */
+}
+
+/* Hiệu ứng khi hover vào cả khối thương hiệu */
+.brand-header:hover .brand-logo {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 208, 96, 0.2);
+}
+
+
+/* Hiệu ứng nổi lên nhẹ khi di chuột vào logo */
+.brand-logo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 200, 83, 0.2); /* Ánh sáng xanh lá nhẹ hợp với logo */
+}
+
+/* Cập nhật lại margin của brand-alias để không bị cách quá xa do đã có logo */
+.brand-alias {
+  font-size: 2.8rem; /* Thu nhỏ chữ một chút để cân bằng với logo 48px */
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  margin: 0;
+  color: var(--text-main);
+}
+
+
+.brand-fullname {
+  font-size: 0.72rem;
+  font-weight: 700;
   color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em; 
+  margin-top: 15px;
+  white-space: normal; 
+  line-height: 1.4;
 }
 
 .role-container { margin-top: 24px; }
-.role-en { display: block; font-size: 0.95rem; font-weight: 700; color: var(--accent); text-transform: uppercase; }
-.role-vn { display: block; font-size: 0.85rem; color: var(--text-light); font-style: italic; margin-top: 2px; }
+.role-en {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  /*line-height: 1.4;*/
+  margin-top: 8px;
+  text-wrap: balance; 
+}
+
+.role-vn {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-top: 6px;
+}
 
 .separator {
   width: 40px;
-  height: 2px;
+  height: 3px;
   background-color: var(--accent);
-  margin: 32px 0;
+  margin: 24px 0;
+  border-radius: 2px;
 }
 
 .intro-text {
-  font-size: 0.95rem;
-  line-height: 1.7;
+  font-size: 0.9rem;
+  line-height: 1.6;
   color: var(--text-secondary);
+  text-wrap: pretty;
 }
 
-/* Navigation & Hover Effects */
+/* --- SIDEBAR NAV MENU --- */
 .nav-menu {
-  margin: 48px 0;
+  margin: 40px 0;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  text-decoration: none;
+.nav-link { 
+  display: flex; 
+  align-items: center; 
+  gap: 16px; 
+  text-decoration: none; 
 }
 
-/* Hiệu ứng thanh ngang khi hover */
-.nav-indicator {
-  width: 24px;
-  height: 1px;
-  background-color: var(--text-light);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+.nav-indicator { 
+  width: 24px; 
+  height: 2px; 
+  background-color: var(--border-subtle); 
+  transition: all 0.3s ease; 
 }
 
 .nav-en {
@@ -78,85 +205,52 @@
   font-weight: 700;
   text-transform: uppercase;
   color: var(--text-light);
-  letter-spacing: 0.1em;
-  transition: color 0.3s ease;
+  letter-spacing: 0.08em; 
+  transition: color 0.3s;
 }
 
-.nav-vn {
-  font-size: 0.7rem;
-  color: var(--text-light);
-  opacity: 0.5;
+.nav-vn { 
+  font-size: 0.75rem; 
+  color: var(--text-light); 
+  transition: color 0.3s; 
 }
 
-/* Trạng thái Hover hoặc Active */
 .nav-link:hover .nav-indicator, 
-.nav-link.active .nav-indicator {
-  width: 50px; /* Thanh ngang dài ra khi hover */
-  background-color: var(--text-main);
+.nav-link.active .nav-indicator { 
+  width: 48px; 
+  background-color: var(--accent); 
 }
 
 .nav-link:hover .nav-en, 
-.nav-link.active .nav-en {
-  color: var(--text-main);
+.nav-link.active .nav-en { 
+  color: var(--text-main); 
 }
 
-/* Partner Logos Section */
-.partner-logos {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  margin-bottom: 24px;
+.nav-link:hover .nav-vn, 
+.nav-link.active .nav-vn { 
+  color: var(--text-secondary); 
 }
 
-.p-logo {
-  height: 20px;
-  width: auto;
-  filter: grayscale(100%); /* Phong cách đen trắng chuyên nghiệp */
-  opacity: 0.4;
-  transition: all 0.3s ease;
+.sidebar-footer { 
+  font-size: 0.75rem; 
+  color: var(--text-light); 
+  font-weight: 500;
 }
 
-.p-logo:hover {
-  filter: grayscale(0%);
-  opacity: 1;
-  transform: scale(1.1); /* Phóng to nhẹ khi hover */
+.domain-tag { 
+  display: inline-block; 
+  background: var(--accent-light); 
+  color: var(--accent); 
+  padding: 4px 12px; 
+  border-radius: 4px; 
+  font-weight: 700; 
+  margin-bottom: 8px;
 }
 
-.sidebar-footer {
-  font-size: 0.7rem;
-  color: var(--text-light);
-  opacity: 0.6;
-  text-transform: uppercase;
-}
-
-
-.layout-wrapper {
-  display: flex;
-  max-width: 1400px;
-  margin: 0 auto;
-  min-height: 100vh; /* Đảm bảo bao phủ toàn màn hình */
-}
-
-/* --- SIDEBAR: CĂN GIỮA & CÂN ĐỐI --- */
-.sidebar {
-  width: 35%;
-  height: 100vh;
-  position: sticky;
-  top: 0;
-  padding: 0 60px; /* Padding trái phải rộng rãi */
-  
-  /* Flexbox giúp đưa mọi thứ vào giữa theo chiều dọc */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; 
-  border-right: 1px solid var(--border-subtle); /* Đường kẻ ngăn cách mờ */
-}
-
-
-/* --- MAIN CONTENT --- */
+/* ================= MAIN CONTENT GLOBALS ================= */
 .main-content {
-  width: 65%;
-  padding: 100px 80px; /* Padding rộng tạo cảm giác thoáng đãng */
+  width: 68%;
+  padding: 80px 100px;
 }
 
 .section-title {
@@ -165,131 +259,264 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--text-light);
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 
-/* --- PROJECT CARD: KHÔNG ẢNH - CHỈ CÓ TRẢI NGHIỆM --- */
+/* --- HERO SEARCH COMPONENT --- */
+.hero-search-container {
+  margin-bottom: 60px;
+}
+
+.main-greeting {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+.search-bar-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 8px 8px 8px 20px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.search-bar-wrapper:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.search-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--text-light);
+  margin-right: 12px;
+}
+
+.global-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  color: var(--text-main);
+  outline: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.global-search-input::placeholder { color: var(--text-light); }
+
+.search-btn {
+  background-color: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-btn:hover { background-color: var(--accent-hover); }
+
+/* --- QUICK STATS COMPONENT --- */
+.quick-stats {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.stat-item strong { color: var(--text-main); font-weight: 700; margin-right: 4px; }
+.stat-divider { width: 4px; height: 4px; border-radius: 50%; background-color: var(--border-subtle); margin: 0 16px; }
+
+/* --- PROJECT CARDS COMPONENT --- */
+.modules-grid { display: flex; flex-direction: column; gap: 24px; }
+
 .project-card {
   background: #ffffff;
-  padding: 40px;
-  margin-bottom: 30px;
-  border-radius: 12px;
-  border: 1px solid transparent; /* Chuẩn bị sẵn border */
+  padding: 32px 40px;
+  border-radius: 16px;
+  border: 1px solid var(--border-subtle);
   cursor: pointer;
   position: relative;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  /* Bóng đổ nhẹ mặc định */
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); 
+  transition: all 0.3s ease;
 }
 
-/* Hiệu ứng Hover: Nổi lên & Border trái màu xanh */
 .project-card:hover {
-  transform: translateY(-5px) scale(1.01);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
-  border-color: var(--border-subtle);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: #CBD5E1;
 }
 
-/* Thanh màu xanh trang trí bên trái khi hover */
 .project-card::before {
   content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 4px;
+  position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
   background: var(--accent);
-  border-radius: 4px 0 0 4px;
-  opacity: 0; /* Ẩn mặc định */
-  transition: opacity 0.3s;
+  border-radius: 16px 0 0 16px;
+  opacity: 0; transition: opacity 0.3s;
 }
 
-.project-card:hover::before {
-  opacity: 1; /* Hiện lên khi hover */
-}
+.project-card:hover::before { opacity: 1; }
 
-/* Nội dung bên trong Card */
-.card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.project-year {
-  font-family: monospace;
-  color: var(--text-light);
-  font-size: 0.85rem;
-}
+.card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.project-year { font-family: monospace; color: var(--text-light); font-size: 0.8rem; letter-spacing: 0.05em; }
+.module-tag { font-size: 0.75rem; font-weight: 700; color: var(--text-main); letter-spacing: 0.05em; }
 
 .card-title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  margin: 0 0 10px 0;
-  color: var(--text-main);
-  display: flex;
-  align-items: center;
+  font-size: 1.5rem; 
+  font-weight: 700; 
+  margin: 0 0 12px 0; 
+  color: var(--text-main); 
+  display: flex; 
+  align-items: center; 
   justify-content: space-between;
 }
 
-/* Mũi tên chỉ hiện rõ khi hover */
-.arrow-icon {
-  opacity: 0;
-  transform: translateX(-10px);
-  transition: all 0.3s ease;
-  color: var(--accent);
-  font-size: 1.5rem;
+.arrow-icon { 
+  opacity: 0; 
+  transform: translateX(-10px); 
+  transition: all 0.3s ease; 
+  color: var(--accent); 
+  font-size: 1.2rem; 
 }
 
-.project-card:hover .arrow-icon {
-  opacity: 1;
-  transform: translateX(0);
+.project-card:hover .arrow-icon { 
+  opacity: 1; 
+  transform: translateX(0); 
 }
 
-.card-desc {
-  color: var(--text-secondary);
-  font-size: 1.05rem;
-  line-height: 1.7;
-  margin-bottom: 25px;
+.card-desc { 
+  color: var(--text-secondary); 
+  font-size: 1rem; 
+  line-height: 1.6; 
+  margin-bottom: 24px; 
 }
 
-/* Tags công nghệ gọn gàng */
 .tags { display: flex; gap: 10px; flex-wrap: wrap; }
-.tag {
+.tag { 
+  font-size: 0.75rem; 
+  font-weight: 600; 
+  color: var(--text-secondary); 
+  background: var(--bg-color); 
+  padding: 6px 12px; 
+  border-radius: 6px; 
+  border: 1px solid var(--border-subtle); 
+}
+
+.project-card:hover .tag { 
+  background: var(--accent-light); 
+  color: var(--accent); 
+  border-color: transparent; 
+}
+
+.ctaBtn {
+  background-color: var(--accent);
+  color: #fff; /* Tự động sẽ là đen/trắng tùy tương phản màu xanh lá */
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ctaBtn:hover { background-color: var(--accent-hover); }
+
+
+/* ================= DOMAIN OFFER CARD ================= */
+
+.domain-offer-container {
+  margin-top: auto; /* Đẩy xuống đáy sidebar */
+  padding-bottom: 30px;
+}
+
+.domain-card {
+  display: block;
+  text-decoration: none;
+  background: linear-gradient(145deg, #ffffff, var(--bg-color));
+  border: 1px dashed var(--accent); /* Viền nét đứt tạo cảm giác "Cắt/Mua" */
+  border-radius: 16px;
+  padding: 20px;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 15px rgba(0, 208, 96, 0.05);
+}
+
+.domain-card:hover {
+  transform: translateY(-5px);
+  border-style: solid;
+  box-shadow: 0 10px 25px rgba(0, 208, 96, 0.15);
+  background: #fff;
+}
+
+.domain-badge {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+.domain-text {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0 0 15px 0;
+}
+
+.domain-highlight {
+  color: var(--text-main);
+  font-weight: 700;
+  border-bottom: 2px solid var(--accent);
+}
+
+.domain-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.contact-label {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--text-secondary);
-  background: #F1F5F9;
-  padding: 6px 14px;
-  border-radius: 6px;
-}
-.project-card:hover .tag {
-  background: #EFF6FF; /* Đổi màu nền tag nhẹ khi hover card */
   color: var(--accent);
 }
 
-@media (max-width: 1024px) {
-  .layout-wrapper { flex-direction: column; }
-  .sidebar { 
-    width: 100%; 
-    height: auto; 
-    padding: 60px 40px; 
-    border-right: none;
-    border-bottom: 1px solid var(--border-subtle);
-  }
-  .main-content { width: 100%; padding: 40px; }
+.fb-mini-icon {
+  width: 18px;
+  height: 18px;
+  color: #1877F2; /* Màu chuẩn Facebook */
+  transition: transform 0.3s ease;
 }
 
-
-.sidebar {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Cân giữa nội dung theo chiều dọc */
+.domain-card:hover .fb-mini-icon {
+  transform: scale(1.2) rotate(10deg);
 }
 
-.sidebar-inner {
-  height: 90%; /* Hoặc tùy chỉnh để tạo khoảng trống */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Đẩy Identity lên trên và Footer xuống dưới cùng */
+/* Hiệu ứng nháy nhẹ cho Badge để thu hút mắt */
+@keyframes pulse-soft {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+.domain-badge {
+  animation: pulse-soft 2s infinite ease-in-out;
 }

@@ -1,136 +1,72 @@
-
-
-import './styles/App.css';
+// src/App.tsx
+import React from 'react';
 import { useNavigate } from "react-router-dom";
 
-function App() {
+export default function App() {
   const navigate = useNavigate();
 
+  // Lưu ý: Không cần <div className="layout-wrapper"> và Sidebar ở đây nữa!
+  // Vì nó đã được bọc bởi MainLayout rồi.
+  
   return (
-    <div className="layout-wrapper">
-      <aside className="sidebar">
-        {/* Nội dung Sidebar */}
-        <div className="sidebar-inner">
-          
-          <div className="identity-group">
-            <h1 className="brand-alias">Dzokha</h1>
-            <div className="brand-fullname">NGUYỄN VĂN KHA</div> 
-            
-            <div className="role-container">
-              <span className="role-en">Cybersecurity & IP Researcher</span>
-              <span className="role-vn">Nghiên cứu An ninh mạng & Sở hữu trí tuệ</span>
-            </div>
+    <>
+      <div className="hero-search-container">
+        <h2 className="main-greeting">Khám phá kho tri thức công nghệ</h2>
+        
+        <div className="search-bar-wrapper">
+          <svg className="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input 
+            type="text" 
+            className="global-search-input"
+            placeholder="Nhập từ khóa công nghệ, chủ đơn hoặc mã phân loại IPC..." 
+          />
+          <button className="search-btn">Tìm kiếm</button>
+        </div>
 
-            <div className="separator"></div>
+        <div className="quick-stats">
+          <div className="stat-item"><strong>1.2M+</strong> Sáng chế</div>
+          <div className="stat-divider"></div>
+          <div className="stat-item"><strong>500+</strong> Lĩnh vực công nghệ</div>
+          <div className="stat-divider"></div>
+          <div className="stat-item"><strong>Cập nhật:</strong> Hôm nay</div>
+        </div>
+      </div>
 
-            <p className="intro-text">
-              Kiến tạo các giải pháp an ninh bền vững và tối ưu hóa giá trị tài sản trí tuệ thông qua tư duy 
-              thiết kế hệ thống chuyên sâu.
-            </p>
-          </div>
+      <div className="section-title">01 // CÔNG CỤ PHÂN TÍCH TRỌNG YẾU</div>
 
-          <nav className="nav-menu">
-            <a href="#projects" className="nav-link active">
-              <span className="nav-indicator"></span>
-              <div className="nav-content">
-                <span className="nav-en">Selected Projects</span>
-                <span className="nav-vn">Dự án tiêu biểu</span>
-              </div>
-            </a>
-            <a href="#about" className="nav-link">
-              <span className="nav-indicator"></span>
-              <div className="nav-content">
-                <span className="nav-en">About & Philosophy</span>
-                <span className="nav-vn">Giới thiệu & Triết lý</span>
-              </div>
-            </a>
-          </nav>
-
-          {/* CHỈ CÓ 1 FOOTER DUY NHẤT Ở ĐÂY */}
-          <div className="sidebar-footer">
-            <div className="social-links">
-              <a href="https://github.com/dzokha" target="_blank" rel="noreferrer" className="social-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-              </a>
-              <a href="https://linkedin.com/in/dzokha" target="_blank" rel="noreferrer" className="social-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-              </a>
-              <a href="mailto:contact@dzokha.vn" className="social-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              </a>
-            </div>
-            <div className="copyright-text">
-               © 2026 Dzokha.vn · Secure by Design
-            </div>
-          </div>
-        </div> {/* Đóng sidebar-inner */}
-      </aside>
-
-      <main className="main-content">
-         <div className="section-title">01 // FEATURED WORK</div>
-
-        {/* Project 1 */}
-        <div className="project-card">
+      <div className="modules-grid">
+        <div className="project-card" onClick={() => navigate('/landscape')}>
           <div className="card-top">
-            <span className="project-year">2024 — PRESENT</span>
-            <span style={{color: '#2563EB', fontSize: '0.75rem', fontWeight: 700}}>SECURE SYSTEM</span>
+            <span className="project-year">MỚI CẬP NHẬT</span>
+            <span className="module-tag">BẢN ĐỒ</span>
           </div>
-          <h2 className="card-title">
-            SDN-FlexShield Security
-            <span className="arrow-icon">→</span>
-          </h2>
+          <h2 className="card-title">Bản đồ Cảnh quan Công nghệ <span className="arrow-icon">→</span></h2>
           <p className="card-desc">
-            Nền tảng giám sát an ninh mạng thời gian thực dành cho SOC. 
-            Tối ưu hóa giao diện Dark Mode để giảm tải thị giác, tích hợp module phân tích luồng dữ liệu thông minh giúp ngăn chặn xâm nhập trái phép.
+            Trực quan hóa hàng nghìn bằng sáng chế trên không gian 2D/3D. Giúp nhận diện ngay lập tức các "điểm nóng" công nghệ và những vùng tiềm năng chưa được khai phá.
           </p>
           <div className="tags">
-            <span className="tag">Cybersecurity UI</span>
-            <span className="tag">React Dashboard</span>
-            <span className="tag">Data Viz</span>
+            <span className="tag">Clustering</span>
+            <span className="tag">Interactive Map</span>
           </div>
         </div>
 
-        {/* Project 2 */}
-        <div className="project-card" onClick={() => navigate('/geneai')}>
+        <div className="project-card" onClick={() => navigate('/analytics')}>
           <div className="card-top">
-             <span className="project-year">2024</span>
+            <span className="project-year">DỮ LIỆU LỊCH SỬ</span>
+            <span className="module-tag">XU HƯỚNG</span>
           </div>
-          <h2 className="card-title">
-            GeneAI Analytics
-            <span className="arrow-icon">→</span>
-          </h2>
+          <h2 className="card-title">Phân tích Trình độ Công nghệ <span className="arrow-icon">→</span></h2>
           <p className="card-desc">
-            Công cụ AI tự động chú giải gen sinh học. Thiết kế tối giản (Minimalism) tập trung tuyệt đối vào hiển thị dữ liệu phức tạp, giúp các nhà nghiên cứu thao tác nhanh hơn 40%.
+            Biểu đồ hóa vòng đời công nghệ. Xác định công nghệ đang ở giai đoạn bình minh, phát triển hay đã bão hòa để tối ưu hóa nguồn lực đầu tư R&D.
           </p>
           <div className="tags">
-            <span className="tag">AI Interface</span>
-            <span className="tag">Bioinformatics</span>
-            <span className="tag">Python</span>
+            <span className="tag">Trend Forecast</span>
+            <span className="tag">Tech Life Cycle</span>
           </div>
         </div>
-
-        {/* Project 3 */}
-        <div className="project-card">
-          <div className="card-top">
-             <span className="project-year">2023</span>
-          </div>
-          <h2 className="card-title">
-            Shop Fish E-commerce
-            <span className="arrow-icon">→</span>
-          </h2>
-          <p className="card-desc">
-            Sàn thương mại điện tử chuyên biệt. Xây dựng trải nghiệm người dùng (UX) liền mạch từ khâu tìm kiếm đến thanh toán, tối ưu tỷ lệ chuyển đổi đơn hàng.
-          </p>
-          <div className="tags">
-            <span className="tag">E-commerce</span>
-            <span className="tag">Fullstack</span>
-            <span className="tag">UX Research</span>
-          </div>
-        </div>
-
-      </main>
-    </div>
+      </div>
+    </>
   );
 }
-
-export default App;

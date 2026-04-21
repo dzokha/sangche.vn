@@ -1,10 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import AppRouter from './router'  // 👉 sửa từ App thành AppRouter
-import './styles/globals.css'
+import AppRouter from './AppRouter'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <AppRouter />
   </React.StrictMode>,
-)
+);
