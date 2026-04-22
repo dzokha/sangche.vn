@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../styles/Insights.module.css';
 import { articles } from '../data/articles'; // 1. Import dữ liệu

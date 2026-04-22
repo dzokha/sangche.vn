@@ -1,5 +1,5 @@
 // src/modules/knowledge/pages/IPLibrary.tsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../styles/IPLibrary.module.css';
 
@@ -11,6 +11,7 @@ interface IPDataItem {
   conditions: string[];
   duration: string;
   icon: React.ReactNode;
+  externalLink: string;
 }
 
 const ipData: IPDataItem[] = [

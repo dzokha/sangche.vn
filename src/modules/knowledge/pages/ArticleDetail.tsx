@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { articles } from '../data/articles';
 import styles from '../styles/Insights.module.css'; // Dùng chung file CSS
