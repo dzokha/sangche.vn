@@ -1,5 +1,4 @@
 // src/layouts/MainLayout.tsx
-import React from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import '../styles/App.css'; // Import CSS cục bộ dùng chung
 
