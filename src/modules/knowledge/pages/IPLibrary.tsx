@@ -1,6 +1,5 @@
 // src/modules/knowledge/pages/IPLibrary.tsx
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import styles from '../styles/IPLibrary.module.css';
 
 interface IPDataItem {
@@ -110,7 +109,6 @@ const ipData: IPDataItem[] = [
 ];
 
 export default function IPLibrary() {
-  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<IPDataItem>(ipData[0]);
 
   const handleSearchClick = () => {
