@@ -1,40 +1,25 @@
 // src/AppRouter.tsx
-// import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-// Import Layout
+// 1. Đổi BrowserRouter thành HashRouter
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+
 import MainLayout from './layouts/MainLayout';
-
-// Import Pages
-import App from './App'; // Trang chủ (Dashboard)
+import App from './App';
 import IPLibrary from './modules/knowledge/pages/IPLibrary';
-import Insights from './modules/knowledge/pages/Insights'; // Thêm import này
-import ArticleDetail from './modules/knowledge/pages/ArticleDetail'; // Import trang chi tiết
-// import GeneAIDashboard from './modules/geneai/pages/Dashboard';
-// import LandscapeMap from './modules/landscape/pages/LandscapeMap';
+import Insights from './modules/knowledge/pages/Insights';
+import ArticleDetail from './modules/knowledge/pages/ArticleDetail';
 
 export default function AppRouter() {
   return (
+    // 2. Sử dụng <Router> (lúc này đã là HashRouter)
     <Router>
       <Routes>
-        {/* Nhóm các trang sử dụng MainLayout (Có Sidebar) */}
         <Route element={<MainLayout />}>
-          {/* Trang mặc định khi vào "/" sẽ là thẻ App */}
           <Route path="/" element={<App />} />
-          
-          {/* Các trang con khác */}
           <Route path="/library" element={<IPLibrary />} />
           <Route path="/insights" element={<Insights />} />
           <Route path="/insights/:id" element={<ArticleDetail />} />
-          
-          {/* Ví dụ cho các trang tương lai: */}
-          {/* <Route path="/landscape" element={<LandscapeMap />} /> */}
-          {/* <Route path="/analytics" element={<TrendAnalytics />} /> */}
         </Route>
-
-        {/* CÁC TRANG KHÔNG DÙNG SIDEBAR (Ví dụ: Trang Login) thì để ra ngoài nhóm trên */}
-        {/* <Route path="/login" element={<Login />} /> */}
-        
       </Routes>
     </Router>
   );
