@@ -34,15 +34,22 @@ body {
 .text-accent { color: var(--accent); }
 
 /* ================= LAYOUT WRAPPER ================= */
+/*.layout-wrapper {
+  display: flex;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 100vh;
+}*/
 .layout-wrapper {
   display: flex;
+  flex-direction: row; /* Desktop mặc định là hàng ngang */
   max-width: 1440px;
   margin: 0 auto;
   min-height: 100vh;
 }
 
 /* ================= SIDEBAR GLOBALS ================= */
-.sidebar {
+/*.sidebar {
   width: 28%;
   height: 100vh;
   position: sticky;
@@ -53,6 +60,19 @@ body {
   padding: 0 40px 0 80px; 
   border-right: 1px solid var(--border-subtle);
   background-color: #ffffff; 
+}*/
+.sidebar {
+  width: 320px; /* Dùng chiều rộng cố định thay vì % để ổn định layout */
+  flex-shrink: 0;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 40px; 
+  border-right: 1px solid var(--border-subtle);
+  background-color: #ffffff;
+  overflow-y: auto; /* Cho phép cuộn nếu menu quá dài */
 }
 
 .sidebar-inner {
@@ -248,11 +268,15 @@ body {
 }
 
 /* ================= MAIN CONTENT GLOBALS ================= */
-.main-content {
+/*.main-content {
   width: 68%;
   padding: 80px 100px;
+}*/
+.main-content {
+  flex: 1; /* Tự động lấy phần diện tích còn lại */
+  padding: 60px 80px;
+  background-color: var(--bg-color);
 }
-
 .section-title {
   font-size: 0.85rem;
   font-weight: 700;
@@ -519,4 +543,117 @@ body {
 
 .domain-badge {
   animation: pulse-soft 2s infinite ease-in-out;
+}
+
+/* ================= RESPONSIVE QUERIES ================= */
+
+/* --- Dành cho Tablet (Màn hình nhỏ hơn 1024px) --- */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 280px;
+    padding: 30px;
+  }
+  .main-content {
+    padding: 40px;
+  }
+  .brand-line-bottom {
+    font-size: 3rem; /* Thu nhỏ tiêu đề logo */
+  }
+}
+
+/* --- Dành cho Mobile (Màn hình nhỏ hơn 768px) --- */
+@media (max-width: 768px) {
+  .layout-wrapper {
+    flex-direction: column; /* Chuyển Sidebar lên trên, Nội dung xuống dưới */
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative; /* Không dính (sticky) ở trên đầu nữa */
+    border-right: none;
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 20px;
+    justify-content: flex-start;
+  }
+
+  .sidebar-inner {
+    max-width: 100%;
+  }
+
+  /* Thu nhỏ Logo và Chữ trên mobile */
+  .brand-logo {
+    height: 60px; 
+  }
+  .brand-line-top {
+    font-size: 1.2rem;
+  }
+  .brand-line-bottom {
+    font-size: 2.2rem;
+  }
+
+  .brand-fullname {
+    font-size: 0.65rem;
+    margin-top: 10px;
+  }
+
+  /* Ẩn bớt các khoảng trắng thừa */
+  .separator, .role-container {
+    margin: 15px 0;
+  }
+
+  .nav-menu {
+    margin: 20px 0;
+    flex-direction: row; /* Chuyển menu thành hàng ngang cuộn trên mobile */
+    overflow-x: auto;
+    padding-bottom: 10px;
+    gap: 25px;
+  }
+
+  .nav-link {
+    flex-shrink: 0;
+  }
+
+  .nav-indicator {
+    display: none; /* Ẩn gạch ngang menu trên mobile cho gọn */
+  }
+
+  /* Main Content trên mobile */
+  .main-content {
+    width: 100%;
+    padding: 30px 20px;
+  }
+
+  .main-greeting {
+    font-size: 1.5rem;
+  }
+
+  /* Search bar co giãn theo màn hình */
+  .search-bar-wrapper {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .search-btn {
+    width: 100%;
+  }
+
+  /* Điều chỉnh Project Cards */
+  .project-card {
+    padding: 20px;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  /* Stats item hiển thị dọc trên điện thoại nhỏ */
+  .quick-stats {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .stat-divider {
+    display: none;
+  }
 }
