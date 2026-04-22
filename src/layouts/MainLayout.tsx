@@ -33,7 +33,7 @@ export default function MainLayout() {
 				</div>
 			</div>
 
-			<div className="brand-fullname">PHÂN TÍCH & BẢN ĐỒ SÁNG CHẾ</div>
+			<div className="brand-fullname">BẢN ĐỒ & PHÂN TÍCH SÁNG CHẾ</div>
   
 			<div className="role-container">
 				<span className="role-en">Patent Intelligence Platform</span>
@@ -64,7 +64,7 @@ export default function MainLayout() {
               <span className="nav-indicator"></span>
               <div className="nav-content">
                 <span className="nav-en">Tech Landscape</span>
-                <span className="nav-vn">Bản đồ Cảnh quan</span>
+                <span className="nav-vn">Bản đồ Công nghệ</span>
               </div>
             </a>
             
@@ -87,8 +87,19 @@ export default function MainLayout() {
             >
               <span className="nav-indicator"></span>
               <div className="nav-content">
-                <span className="nav-en">IP Library</span>
+                <span className="nav-en">IP Knowledge</span>
                 <span className="nav-vn">Thư viện Kiến thức</span>
+              </div>
+            </a>
+            <a 
+              className={`nav-link ${isActive('/insights') ? 'active' : ''}`} 
+              onClick={() => navigate('/insights')}
+              style={{cursor: 'pointer'}}
+            >
+              <span className="nav-indicator"></span>
+              <div className="nav-content">
+                <span className="nav-en">News & Insights</span>
+                <span className="nav-vn">Tin tức & Phân tích</span>
               </div>
             </a>
           </nav>
@@ -97,7 +108,7 @@ export default function MainLayout() {
             <a href={FACEBOOK_URL} target="_blank" rel="noreferrer" className="domain-card">
               <div className="domain-badge">CƠ HỘI ĐẦU TƯ</div>
               <p className="domain-text">
-                Sở hữu tên miền thương hiệu <span className="domain-highlight">sangche.vn</span> để bứt phá khởi nghiệp.
+                Sở hữu tên miền thương hiệu <span className="domain-highlight">sangche.vn</span> trong phong trào khởi nghiệp Đổi mới sáng tạo.
               </p>
               <div className="domain-footer">
                 <span className="contact-label">Liên hệ chính chủ</span>
