@@ -89,9 +89,10 @@ body {
 
 .brand-header {
   display: flex;
-  align-items: center; /* Căn giữa logo và cụm chữ theo trục dọc */
-  gap: 12px;           /* Khoảng cách giữa logo và chữ */
+  align-items: center; 
+  gap: 12px;           
   margin-bottom: 12px;
+  flex-wrap: nowrap; /* BẮT BUỘC: Không cho phép rớt dòng toàn bộ khối logo + chữ */
 }
 
 .brand-logo {
@@ -105,20 +106,25 @@ body {
   transition: transform 0.3s ease;
 }
 
+
 .brand-text-group {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  line-height: 1;      /* Quan trọng: Loại bỏ khoảng cách thừa của dòng */
+  line-height: 1;      
+  min-width: 0; /* BẮT BUỘC: Giúp flex item con có thể thu nhỏ (shrink) chữ thay vì rớt dòng */
 }
 
+
 .brand-line-top {
-  font-size: 1.8rem;   /* Chữ SÁNG CHẾ nhỏ hơn một chút */
-  font-weight: 700;
+  font-size: 1.8rem;   
+  font-weight: 900; /* Tăng độ đậm lên một chút để bù lại nếu chữ bị thu nhỏ */
   color: var(--text-main);
   letter-spacing: -0.02em;
   margin-bottom: 2px;
+  white-space: nowrap; /* Ép không xuống dòng */
 }
+
 
 .brand-line-bottom {
   font-size: 3.8rem;   /* Chữ VN cực đại để tạo điểm nhấn thương hiệu */
@@ -199,7 +205,7 @@ body {
 
 /* --- SIDEBAR NAV MENU --- */
 .nav-menu {
-  margin: 40px 0;
+  margin: 20px 0;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -581,16 +587,18 @@ body {
     max-width: 100%;
   }
 
-  /* Thu nhỏ Logo và Chữ trên mobile */
+
   .brand-logo {
-    height: 60px; 
+    height: 50px; /* Thu nhỏ logo hơn nữa để chừa chỗ cho chữ */
   }
   .brand-line-top {
-    font-size: 1.2rem;
+    font-size: 1.1rem; /* Nhỏ hơn so với bản cũ */
+    white-space: nowrap; /* Vẫn ép không xuống dòng trên mobile */
   }
   .brand-line-bottom {
-    font-size: 2.2rem;
+    font-size: 2rem; 
   }
+
 
   .brand-fullname {
     font-size: 0.65rem;

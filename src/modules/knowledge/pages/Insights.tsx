@@ -11,7 +11,7 @@ export default function Insights() {
       <div className="section-title">BÀI VIẾT & PHÂN TÍCH CHUYÊN SÂU</div>
       <div className="hero-search-container" style={{marginBottom: '30px'}}>
           <h2 className="main-greeting">Tài sản trí tuệ định hình tương lai doanh nghiệp.</h2>
-          <p className="intro-text" style={{maxWidth: '700px', fontStyle: 'italic'}}>
+          <p className="intro-text" style={{fontStyle: 'italic'}}>
             "Tài sản lớn nhất của bạn là khả năng kiếm tiền.<br/>
 Tài nguyên lớn nhất của bạn là thời gian." — Brian Tracy. <br/><br/>
             Khám phá các góc nhìn chuyên sâu về chiến lược bảo vệ tài sản trí tuệ, kinh nghiệm thực tiễn và xu hướng công nghệ mới nhất.
