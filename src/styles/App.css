@@ -92,46 +92,47 @@ body {
   align-items: center; 
   gap: 12px;           
   margin-bottom: 12px;
-  flex-wrap: nowrap; /* BẮT BUỘC: Không cho phép rớt dòng toàn bộ khối logo + chữ */
+  flex-wrap: nowrap !important; /* Đảm bảo toàn bộ khối logo + chữ không bao giờ rớt hàng */
+  width: 100%;
 }
 
 .brand-logo {
-  /* Không set cứng chiều cao px nữa, mà để nó tự co dãn theo container */
-  height: 95px;        /* Độ cao này sẽ khớp với 2 dòng chữ bên dưới */
+  height: 75px;        /* Giảm từ 95px xuống 75px để nhường lại không gian ngang cho chữ */
   width: auto;
   object-fit: contain;
   border-radius: 10px;
-  background-color: #1a1a1a; /* Nền đen sâu cho logo nổi bật */
-  padding: 4px;
+  background-color: #1a1a1a; 
+  padding: 6px;
   transition: transform 0.3s ease;
+  flex-shrink: 0;      /* Khóa cứng kích thước, không cho logo bị bóp méo */
 }
-
 
 .brand-text-group {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  line-height: 1;      
-  min-width: 0; /* BẮT BUỘC: Giúp flex item con có thể thu nhỏ (shrink) chữ thay vì rớt dòng */
+  line-height: 1.1;      
+  flex-grow: 1;
+  min-width: 0;        /* Cho phép container con kiểm soát kích thước chuẩn */
 }
-
 
 .brand-line-top {
-  font-size: 1.8rem;   
-  font-weight: 900; /* Tăng độ đậm lên một chút để bù lại nếu chữ bị thu nhỏ */
+  font-size: 1.45rem;  /* Tối ưu lại size chữ (khoảng 23px) để vừa khít khoảng trống còn lại */
+  font-weight: 900; 
   color: var(--text-main);
-  letter-spacing: -0.02em;
-  margin-bottom: 2px;
-  white-space: nowrap; /* Ép không xuống dòng */
+  letter-spacing: -0.01em;
+  white-space: nowrap !important; /* ÉP BUỘC TUYỆT ĐỐI KHÔNG XUỐNG DÒNG */
+  display: block;
 }
 
-
 .brand-line-bottom {
-  font-size: 3.8rem;   /* Chữ VN cực đại để tạo điểm nhấn thương hiệu */
+  font-size: 2.8rem;   /* Thu nhỏ chữ VN một chút để cân bằng tỷ lệ với dòng trên */
   font-weight: 900;
-  color: var(--accent); /* Màu xanh lá của Logo */
-  letter-spacing: -0.05em;
-  margin-top: -5px;    /* Đẩy chữ VN sát lên trên để khít với dòng 1 */
+  color: var(--accent); 
+  letter-spacing: -0.04em;
+  margin-top: 2px;     /* Căn chỉnh khoảng cách vừa vặn, không bị dính chặt vào chữ SÁNG CHẾ */
+  white-space: nowrap !important;
+  display: block;
 }
 
 /* Hiệu ứng khi hover vào cả khối thương hiệu */
